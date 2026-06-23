@@ -14,7 +14,7 @@ import flixel.tweens.FlxEase;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -36,10 +36,6 @@ import sys.io.File;
 import Type.ValueType;
 import Controls;
 import DialogueBoxPsych;
-
-#if desktop
-import Discord;
-#end
 
 using StringTools;
 
@@ -1428,13 +1424,6 @@ class FunkinLua {
 			}
 			gonnaClose = true;
 		});
-
-		Lua_helper.add_callback(lua, "changePresence", function(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float) {
-			#if desktop
-			DiscordClient.changePresence(details, state, smallImageKey, hasStartTimestamp, endTimestamp);
-			#end
-		});
-
 
 		// LUA TEXTS
 		Lua_helper.add_callback(lua, "makeLuaText", function(tag:String, text:String, width:Int, x:Float, y:Float) {

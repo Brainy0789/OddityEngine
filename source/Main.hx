@@ -75,7 +75,7 @@ class Main extends Sprite
 		// fuck you, persistent caching stays ON during sex
 		FlxGraphic.defaultPersist = true;
 		// the reason for this is we're going to be handling our own cache smartly
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+		addChild(new FlxGame(1280, 720, TitleState, 60, 60, true, false));
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);

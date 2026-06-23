@@ -1,8 +1,5 @@
 package editors;
 
-#if desktop
-import Discord.DiscordClient;
-#end
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
@@ -11,7 +8,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUI9SliceSprite;
 import flixel.addons.ui.FlxUI;
@@ -251,14 +248,6 @@ class DialogueEditorState extends MusicBeatState
 			}
 			characterAnimSpeed();
 		}
-
-		#if desktop
-		// Updating Discord Rich Presence
-		var rpcText:String = lineInputText.text;
-		if(rpcText == null || rpcText.length < 1) rpcText = '(Empty)';
-		if(rpcText.length < 3) rpcText += '  '; //Fixes a bug on RPC that triggers an error when the text is too short
-		DiscordClient.changePresence("Dialogue Editor", rpcText);
-		#end
 	}
 
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>) {

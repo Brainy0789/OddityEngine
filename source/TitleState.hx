@@ -1,7 +1,6 @@
 package;
 
 #if desktop
-import Discord.DiscordClient;
 import sys.thread.Thread;
 #end
 import flixel.FlxG;
@@ -26,7 +25,7 @@ import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -195,16 +194,6 @@ class TitleState extends MusicBeatState
 			FlxTransitionableState.skipNextTransOut = true;
 			MusicBeatState.switchState(new FlashingState());
 		} else {
-			#if desktop
-			if (!DiscordClient.isInitialized)
-			{
-				DiscordClient.initialize();
-				Application.current.onExit.add (function (exitCode) {
-					DiscordClient.shutdown();
-				});
-			}
-			#end
-
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				startIntro();
